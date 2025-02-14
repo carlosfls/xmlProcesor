@@ -1,0 +1,6 @@
+###
+GET http://localhost:8080/xml
+###
+GET http://localhost:8080/xml/toJson
+###
+GET http://localhost:8080/xml/toPojo
