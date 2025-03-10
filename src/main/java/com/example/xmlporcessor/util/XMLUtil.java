@@ -1,8 +1,13 @@
 package com.example.xmlporcessor.util;
 
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import java.util.List;
 
@@ -34,5 +39,22 @@ public class XMLUtil {
                 }
             }
         }
+    }
+
+    /**
+     * Processing the xml document with xpath which is better for get the values from the xml document
+     * @param document The xml document
+     * @return The value from that tag
+     */
+    public static String getExampleValueFromDocumentXmlWithXPath(Document document) {
+        String result = "";
+        XPath xPath = XPathFactory.newInstance().newXPath();
+        try {
+            result = xPath.evaluate("/letter/salutation", document);
+            System.out.println("The value for that tag is: "+ result);
+        } catch (XPathExpressionException e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
     }
 }
